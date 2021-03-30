@@ -15,7 +15,6 @@
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
 
-
 	<error-page>
 		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type> <!-- excessao do sistema pagina de erro direciona pagina abaixo -->
 		<location>/error/acessoNegado.jsf</location>
@@ -102,6 +101,5 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
-
 
 </web-app>
