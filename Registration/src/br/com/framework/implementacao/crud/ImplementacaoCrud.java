@@ -19,7 +19,7 @@ import br.com.framework.interfac.crud.InterfaceCrud;
 
 @Component
 @Transactional
-public class ImprementacaoCrud<T> implements InterfaceCrud<T> {
+public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 	private static final long serialVersionUID = 1L;
 
