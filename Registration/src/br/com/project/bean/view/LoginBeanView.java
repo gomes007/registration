@@ -36,8 +36,21 @@ public class LoginBeanView extends BeanManagedViewAbstract  {
 	
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidarSessionMetodo(HttpServletRequest httpServletRequest) throws Exception{
-			System.out.println("ggggggggggg");
+			
+		String useLogadoSessao = null;
+		if (httpServletRequest.getUserPrincipal() != null) {
+			useLogadoSessao = httpServletRequest.getUserPrincipal().getName();
 		}
+		
+		if (useLogadoSessao == null || (useLogadoSessao != null && useLogadoSessao.trim().isEmpty())) {
+			useLogadoSessao = httpServletRequest.getRemoteUser();
+		}
+		
+		if (useLogadoSessao != null && !useLogadoSessao.isEmpty()) {
+			sessionController.invalidateSession(useLogadoSessao);
+		}
+		
+}
 	
 	
 	public void invalidar(ActionEvent actionEvent) throws Exception {
