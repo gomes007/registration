@@ -37,17 +37,17 @@ public class LoginBeanView extends BeanManagedViewAbstract  {
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidarSessionMetodo(HttpServletRequest httpServletRequest) throws Exception{
 			
-		String useLogadoSessao = null;
+		String userLogadoSessao = null;
 		if (httpServletRequest.getUserPrincipal() != null) {
-			useLogadoSessao = httpServletRequest.getUserPrincipal().getName();
+			userLogadoSessao = httpServletRequest.getUserPrincipal().getName();
 		}
 		
-		if (useLogadoSessao == null || (useLogadoSessao != null && useLogadoSessao.trim().isEmpty())) {
-			useLogadoSessao = httpServletRequest.getRemoteUser();
+		if (userLogadoSessao == null || (userLogadoSessao != null && userLogadoSessao.trim().isEmpty())) {
+			userLogadoSessao = httpServletRequest.getRemoteUser();
 		}
 		
-		if (useLogadoSessao != null && !useLogadoSessao.isEmpty()) {
-			sessionController.invalidateSession(useLogadoSessao);
+		if (userLogadoSessao != null && !userLogadoSessao.isEmpty()) {
+			sessionController.invalidateSession(userLogadoSessao);
 		}
 		
 }

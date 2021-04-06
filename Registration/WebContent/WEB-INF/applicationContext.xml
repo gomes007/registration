@@ -68,6 +68,8 @@
 		<property name="encoding" value="ISO-8859-1" />
 		<property name="validateOnMigrate" value="false" />
 	</bean>
+	
+	
 
 	<!-- JDBC Springframework -->
 	<bean id="transactionManager" name="transactionManager"

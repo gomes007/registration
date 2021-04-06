@@ -1,13 +1,12 @@
-function logout(contextPath){
+function logout(contextPath) {
 	
+	document.location =	 contextPath + '/j_spring_security_logout';
 	var post = 'invalidar_session';
-	
-	$.ajax({
-		type:"POST",
-		url: post
-	}).always(function(resposta){
-	document.location = contextPath + '/j_spring_security_logout';		
-	});	
+	$.ajax(
+		{ 
+		  type: "POST", 
+		  url: post
+		});
 }
 
 function invalidarSession(context, pagina) {	
