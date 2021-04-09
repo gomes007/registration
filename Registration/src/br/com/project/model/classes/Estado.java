@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -25,6 +26,9 @@ import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
+
+
+
 
 @Audited
 @Entity
