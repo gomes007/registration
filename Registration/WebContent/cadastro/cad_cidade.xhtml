@@ -15,12 +15,78 @@
 				<p:panel header="Cadastro de cidade" id="panelCadastro">
 					<h:panelGrid id="gridCidade" columns="3">
 						<h:outputLabel for="id" value="Código" id="labelId" />
-						<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-						/>
+						<p:inputText id="id" styleClass="estiloIdCadastro" 
+							value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"
+							disabled="true"	/>
 						<h:outputLabel />
+						
+						
+						<h:outputLabel id="labelNomeConsultaCidade" for="cidadeNome" value="Nome * :"  />
+						<p:inputText id="cidadeNome" styleClass="styleInputNome" 
+						required="true" maxlength="100" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
+						requiredMessage="Informe o nome da cidade"/>
+						<p:message for="cidadeNome" />
+						
+						<h:outputLabel for="estado" id="labelEstado" value="Estado * :" />
+						<p:selectOneMenu id="estado" required="true" style="width:230px;" 
+							requiredMessage="Informe o estado" value="#{cidadeBeanView.objetoSelecionado.estado}">
+							<f:selectItems value="#{estadoBeanView.estados}" />
+						</p:selectOneMenu>
+						
+						
 					</h:panelGrid>
 				</p:panel>
+				
+				<p:commandButton value="salvar" ajax="true" action="#{cidadeBeanView.save}"/>				
+				<p:commandButton value="novo" ajax="true" action="#{cidadeBeanView.novo}" />
 			</h:form>
+			
+			<p:dataTable id="tableResult" value="#{cidadeBeanView.list}" var="objeto" emptyMessage="não existem valores para exibir">				
+				<p:column>
+					<center>
+					<f:facet name="header">Código</f:facet>
+					<h:outputText value="#{objeto.cid_codigo}" />
+					</center>
+				</p:column>	
+				
+				<p:column>
+					<center>
+					<f:facet name="header">Cidade</f:facet>
+					<h:outputText value="#{objeto.cid_descricao}" />
+					</center>
+				</p:column>	
+				
+				<p:column>
+					<center>
+					<f:facet name="header">Estado</f:facet>
+					<h:outputText value="#{objeto.estado.est_nome}" />
+					</center>
+				</p:column>
+				
+				<p:column>
+					<center>
+					<f:facet name="header">Editar</f:facet>	
+					<p:commandLink action="#{cidadeBeanView.editar}" update="@form:formCadastro"
+						id="editarCidade" value="Editar" ajax="true" immediate="true">
+						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
+					</p:commandLink>				
+					</center>
+				</p:column>
+				
+				
+				<p:column>
+					<center>
+					<f:facet name="header">Excluir</f:facet>	
+					<p:commandLink action="#{cidadeBeanView.excluir}" update="tableResult"
+						id="excluirCidade" value="Excluir" ajax="true" immediate="true">
+						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
+					</p:commandLink>				
+					</center>
+				</p:column>
+				
+											
+						
+			</p:dataTable>			
 		</ui:define>		
 	</ui:composition>
 
